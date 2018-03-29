@@ -1,0 +1,5 @@
+<span *ngIf="displayError">{{errorMsg}}</span><br/>
+<input type="text" [(ngModel)]="username" name="uname"><br/>
+<input type="password" [(ngModel)]="password" name="pwd"><br/>
+<button value="Login"
+(click)="login()">Login</button>
