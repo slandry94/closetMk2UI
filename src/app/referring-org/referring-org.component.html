@@ -1,3 +1,56 @@
-<p>
-  referring-org works!
-</p>
+<!-- <div class="loader" [hidden]="!loading">
+  <mat-spinner></mat-spinner>
+</div> -->
+<div class="content">
+  <h2>{{header}}</h2>
+<table>
+  <tr>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="Organization Name" [(ngModel)]="refOrgInstance.organizationName">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="Program or Location" [(ngModel)]="refOrgInstance.organizationProgLoc">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="Address 1" [(ngModel)]="refOrgInstance.orgAddressOne">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="Address 2" [(ngModel)]="refOrgInstance.orgAddressTwo">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="City" [(ngModel)]="refOrgInstance.orgAddressCity">
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="State" [(ngModel)]="refOrgInstance.orgAddressState">
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <input matInput placeholder="Zip Code" [(ngModel)]="refOrgInstance.orgAddressZip">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td id="subButton"><button mat-raised-button>{{modType}}</button></td>
+  </tr>
+</table>
+</div>
