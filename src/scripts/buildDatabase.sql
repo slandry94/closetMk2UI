@@ -1,5 +1,6 @@
+--script for building the table used by closetMk2UI and closetMk2Service
 USE restTest;
-
+--NOTE: all test data will not be in prod
 CREATE TABLE Users (
   userId INT PRIMARY KEY NOT NULL,
   username VARCHAR(45),
@@ -7,7 +8,10 @@ CREATE TABLE Users (
   role ENUM('user', 'admin'),
   lastLogin TIMESTAMP
 );
-
+--create a test admin with password foo
+INSERT INTO Users VALUES(0,'testAdmin','2C26B46B68FFC68FF99B453C1D30413413422D706483BFA0F98A5E886266E7AE','admin',NOW());
+--create a test user with password bar
+INSERT INTO Users VALUES(0,'testUser','FCDE2B2EDBA56BF408601FB721FE9B5C338D10EE429EA04FAE5511B68FBF8FB9','user',NOW());
 CREATE TABLE Access (
   id VARCHAR(45) PRIMARY KEY NOT NULL,
   secret VARCHAR(25)
@@ -23,7 +27,10 @@ CREATE TABLE RefOrg (
   orgAddressZip VARCHAR(5),
   PRIMARY KEY (referringOrganization, referringProgOrLocation)
 );
-
+--Add example data for RefOrg
+INSERT INTO RefOrg VALUES('Test Organization','Fake Town','123 Fake Street','','Anytown','CA',90000);
+INSERT INTO RefOrg VALUES('Self','Self','','','','','');
+--Create table for employees/individuals to make referrals
 CREATE TABLE RefOrgEmployee (
   userId INT PRIMARY KEY NOT NULL,
   firstName VARCHAR(100),

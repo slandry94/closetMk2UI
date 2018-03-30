@@ -75,6 +75,15 @@ export class ReferringOrgComponent implements OnInit, OnDestroy {
   private onGetOrgFailure(error: any) {
     console.log(error);
   }
+  private updateRefOrg() {
+
+  }
+  private onUpdateOrgSuccess(data: any) {
+
+  }
+  private onUpdateOrgFailure(error: any) {
+
+  }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
