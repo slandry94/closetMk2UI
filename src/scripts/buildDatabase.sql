@@ -31,19 +31,24 @@ CREATE TABLE RefOrg (
 INSERT INTO RefOrg VALUES('Test Organization','Fake Town','123 Fake Street','','Anytown','CA',90000);
 INSERT INTO RefOrg VALUES('Self','Self','','','','','');
 --Create table for employees/individuals to make referrals
-CREATE TABLE RefOrgEmployee (
-  userId INT PRIMARY KEY NOT NULL,
+CREATE TABLE Employee (
+  eid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   firstName VARCHAR(100),
   lastName VARCHAR(100),
+  email VARCHAR(100),
   primaryPhone VARCHAR(10),
   primaryPhoneExt VARCHAR(5),
-  cellPhone VARCHAR(10),
-  referringOrganization VARCHAR(255) NOT NULL,
-  referringProgOrLocation VARCHAR(255) NOT NULL,
-  CONSTRAINT fk_ref_org FOREIGN KEY (referringOrganization, referringProgOrLocation)
-  REFERENCES RefOrg(referringOrganization, referringProgOrLocation)
+  cellPhone VARCHAR(10)
 );
-
+--create table tying employee to an organization
+CREATE TABLE RefOrgEmployee (
+	referringOrganization VARCHAR(255) NOT NULL,
+	referringProgOrLocation VARCHAR(255) NOT NULL,
+	eid INT NOT NULL UNIQUE,
+	CONSTRAINT fk_roe_opl FOREIGN KEY (referringOrganization,referringProgOrLocation) REFERENCES RefOrg(referringOrganization,referringProgOrLocation),
+	CONSTRAINT fk_roe_e FOREIGN KEY (eid) REFERENCES Employee(eid),
+	PRIMARY KEY (referringOrganization,referringProgOrLocation,eid)
+);
 CREATE TABLE AgeRange (
   ageRange VARCHAR(20) PRIMARY KEY NOT NULL
 );

@@ -75,8 +75,11 @@ export class ReferringOrgComponent implements OnInit, OnDestroy {
   private onGetOrgFailure(error: any) {
     console.log(error);
   }
-  private updateRefOrg() {
-
+  submit() {
+    return this._orgService.update(this.refOrgInstance).subscribe(
+      data => this.onUpdateOrgSuccess(data),
+      error => this.onUpdateOrgFailure(error)
+    );
   }
   private onUpdateOrgSuccess(data: any) {
 
