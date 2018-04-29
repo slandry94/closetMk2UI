@@ -12,17 +12,26 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import { ReferringOrgService } from './referring-org/referring-org.service';
+import { ReferringOrgListComponent } from './referring-org-list/referring-org-list.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ReferringOrgListDialogComponent } from './referring-org-list/referring-org-list-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
-  {path: 'refOrg/:id/:prog', component: ReferringOrgComponent}
+  {path: 'refOrg/:id/:prog/:mode', component: ReferringOrgComponent},
+  {path: 'refOrg', component: ReferringOrgListComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserLandingComponent,
-    ReferringOrgComponent
+    ReferringOrgComponent,
+    ReferringOrgListComponent,
+    ReferringOrgListDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -37,9 +46,15 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule
   ],
-  providers: [],
+  entryComponents: [
+    ReferringOrgListDialogComponent
+  ],
+  providers: [ReferringOrgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

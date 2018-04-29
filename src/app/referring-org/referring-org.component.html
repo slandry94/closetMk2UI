@@ -7,50 +7,51 @@
   <tr>
     <td>
       <mat-form-field>
-        <input matInput placeholder="Organization Name" [(ngModel)]="refOrgInstance.organizationName">
+        <input matInput placeholder="Organization Name" [(ngModel)]="refOrgInstance.orgName" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
   </tr>
   <tr>
     <td>
       <mat-form-field>
-        <input matInput placeholder="Program or Location" [(ngModel)]="refOrgInstance.organizationProgLoc">
+        <input matInput placeholder="Program or Location" [(ngModel)]="refOrgInstance.programOrLocation" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
   </tr>
   <tr>
     <td>
       <mat-form-field>
-        <input matInput placeholder="Address 1" [(ngModel)]="refOrgInstance.orgAddressOne">
+        <input matInput placeholder="Address 1" [(ngModel)]="refOrgInstance.addressOne" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
   </tr>
   <tr>
     <td>
       <mat-form-field>
-        <input matInput placeholder="Address 2" [(ngModel)]="refOrgInstance.orgAddressTwo">
+        <input matInput placeholder="Address 2" [(ngModel)]="refOrgInstance.addressTwo" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
   </tr>
   <tr>
     <td>
       <mat-form-field>
-        <input matInput placeholder="City" [(ngModel)]="refOrgInstance.orgAddressCity">
+        <input matInput placeholder="City" [(ngModel)]="refOrgInstance.addressCity" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
     <td>
       <mat-form-field>
-        <input matInput placeholder="State" [(ngModel)]="refOrgInstance.orgAddressState">
+        <input matInput placeholder="State" [(ngModel)]="refOrgInstance.addressState" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
     <td>
       <mat-form-field>
-        <input matInput placeholder="Zip Code" [(ngModel)]="refOrgInstance.orgAddressZip">
+        <input matInput placeholder="Zip Code" [(ngModel)]="refOrgInstance.addressZip" [disabled]="isReadOnly">
       </mat-form-field>
     </td>
   </tr>
   <tr>
-    <td id="subButton"><button mat-raised-button (click)="submit()">{{modType}}</button></td>
+    <td id="subButton"><button *ngIf="!isReadOnly" mat-raised-button (click)="submit()">{{modType}}</button></td>
   </tr>
 </table>
+<a routerLink="/refOrg">Return to List</a>
 </div>

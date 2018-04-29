@@ -1,0 +1,30 @@
+<mat-table [dataSource]="refOrgs">
+  <ng-container matColumnDef="orgName">
+    <mat-header-cell *matHeaderCellDef>
+      Organization
+    </mat-header-cell>
+    <mat-cell *matCellDef="let org">
+      {{org.orgName}}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="progLoc">
+    <mat-header-cell *matHeaderCellDef>
+      Program/Location
+    </mat-header-cell>
+    <mat-cell *matCellDef="let org">
+      {{org.programOrLocation}}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="options">
+    <mat-header-cell *matHeaderCellDef>
+      Options
+    </mat-header-cell>
+    <mat-cell *matCellDef="let org">
+      <a routerLink="/refOrg/{{org.orgName}}/{{org.programOrLocation}}/view"><mat-icon>visibility</mat-icon></a>
+      <a routerLink="/refOrg/{{org.orgName}}/{{org.programOrLocation}}/edit"><mat-icon>create</mat-icon></a>
+      <mat-icon (click)="deleteOrg(org.orgName,org.programOrLocation)">delete</mat-icon>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="colsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let org; columns: colsToDisplay"></mat-row>
+</mat-table>
